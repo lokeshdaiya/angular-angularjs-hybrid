@@ -1,5 +1,5 @@
 {
-  "name": "ngapp",
+  "name": "ng1ng2hybrid",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -20,6 +20,10 @@
     "@angular/platform-browser": "~7.0.0",
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
+    "@angular/upgrade": "^7.2.11",
+    "@types/angular": "^1.6.54",
+    "angular": "^1.6.7",
+    "angular-route": "^1.6.7",
     "core-js": "^2.5.4",
     "rxjs": "~6.3.3",
     "zone.js": "~0.8.26"

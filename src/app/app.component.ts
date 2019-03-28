@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+
+import { Component, Injector } from '@angular/core';
+import {UpgradeHelper} from './upgradehelper';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ngapp';
+  constructor(private upgradeHelper: UpgradeHelper) {
+  }
+
+  ngOnInit() {
+  }
+
+  open(path) {
+    this.upgradeHelper.navigate(path);
+  }
 }
+
