@@ -23,6 +23,7 @@ NG1AppModule.controller('ng1app.SampleController', ['$scope', function ($scope) 
     });
 })
 .config(($locationProvider)=> {
-  $locationProvider.hashPrefix('');
+  // $locationProvider.hashPrefix('');
+  $locationProvider.html5Mode(true);
 })
 

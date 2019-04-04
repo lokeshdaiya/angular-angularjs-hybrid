@@ -4,9 +4,9 @@ import {Component} from '@angular/core';
   selector: 'app-simple',
   template: `
 
-    <section >
-      Simple component
-    </section>
+    <h2>
+      Angular Simple component
+    </h2>
 	`
 })
 

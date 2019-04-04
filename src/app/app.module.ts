@@ -4,7 +4,7 @@ import { downgradeComponent } from '@angular/upgrade/static';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, DoBootstrap } from '@angular/core';
 import { UpgradeModule } from '@angular/upgrade/static';
-import { UrlHandlingStrategy, UrlTree } from '@angular/router';
+import { UrlHandlingStrategy, UrlTree, RouterModule } from '@angular/router';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +20,7 @@ export class hybridUrlStrategy implements UrlHandlingStrategy {
   shouldProcessUrl(url: UrlTree) {
     let urlExp = new RegExp(this.urlPattern);
     return urlExp.test(url.toString());
+    // return url.toString().startsWith("/ng2") || url.toString() == "/";
 
   }
   extract(url: UrlTree) {    return url;  }
@@ -42,17 +43,18 @@ export class hybridUrlStrategy implements UrlHandlingStrategy {
   providers: [
     UpgradeHelper,
     { provide: UrlHandlingStrategy, useClass: hybridUrlStrategy},
-    { provide: '$location', useFactory: getLocationService, deps: ['$injector'] },
+    { provide: '$location', useFactory: getLocationService, deps: ['$injector'] }, // this is added to programmatically navigate angularjs pages
 
   ],
   bootstrap: [AppComponent],
-  entryComponents: [WelcomeComponent]
+  entryComponents: [WelcomeComponent, SimpleComponent]
 })
 export class AppModule {
   constructor(private upgrade: UpgradeModule) {}
 
+ /// this will be called only when you don't pass bootstrap in NGModule
   // ngDoBootstrap() {
-  //   this.upgrade.bootstrap(document.documentElement, [NG1AppModule.name]);
+  //   this.upgrade.bootstrap(document.body, [NG1AppModule.name]);
   // }
  }
 
